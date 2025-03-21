@@ -46,6 +46,26 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            @media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .content {
+        max-width: 100%;
+    }
+    .profile-img img {
+        width: 180px; /* Adjust profile image size */
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar a {
+        margin: 10px 0; /* More spacing for mobile */
+    }
+}
+
         }
         .container h1 {
             font-size: 42px;
@@ -79,13 +99,12 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="#">Portfolio</a>
-            <a href="#">Blog</a>
+            <a href="#">Projects</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
     <div class="container">
-        <h1>My Portfolio</h1>
+        <h1>My Projects</h1>
         <p>Here are some of my featured projects showcasing my skills in web development.</p>
         <div class="projects">
             <div class="project-card">
