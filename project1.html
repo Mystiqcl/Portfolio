@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: black;
+            color: cyan;
+        }
+        .container {
+            max-width: 600px;
+            background: rgba(0, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px cyan;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: cyan;
+            color: black;
+            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px cyan;
+        }
+        button:hover {
+            background: #00cccc;
+            box-shadow: 0 0 20px cyan;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Builder</h1>
+        <label>Name: <input type="text" id="name" oninput="updateResume()"></label>
+        <label>Email: <input type="text" id="email" oninput="updateResume()"></label>
+        <label>Phone: <input type="text" id="phone" oninput="updateResume()"></label>
+        <label>Address: <input type="text" id="address" oninput="updateResume()"></label>
+
+        <div id="linkedin-section" class="hidden">
+            <label>LinkedIn: <input type="text" id="linkedin-input" oninput="updateResume()"></label>
+        </div>
+        <div id="website-section" class="hidden">
+            <label>Website/Portfolio: <input type="text" id="website-input" oninput="updateResume()"></label>
+        </div>
+        <div id="github-section" class="hidden">
+            <label>GitHub: <input type="text" id="github-input" oninput="updateResume()"></label>
+        </div>
+        <div id="twitter-section" class="hidden">
+            <label>Twitter: <input type="text" id="twitter-input" oninput="updateResume()"></label>
+        </div>
+        <div id="certifications-section" class="hidden">
+            <label>Certifications: <input type="file" id="certification-image" accept="image/*"></label>
+        </div>
+
+        <button onclick="downloadPDF()">Download as PDF</button>
+    </div>
+    
+    <script>
+        function getURLParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('sections') ? urlParams.get('sections').split(',') : [];
+        }
+
+        function showSelectedSections() {
+            let selectedSections = getURLParams();
+            selectedSections.forEach(section => {
+                let element = document.getElementById(section + '-section');
+                if (element) element.classList.remove('hidden');
+            });
+        }
+
+        function updateResume() {
+            console.log("Updating resume...");
+        }
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            let doc = new jsPDF();
+            let content = `Name: ${document.getElementById('name').value}\n` +
+                          `Email: ${document.getElementById('email').value}\n` +
+                          `Phone: ${document.getElementById('phone').value}\n` +
+                          `Address: ${document.getElementById('address').value}\n`;
+            
+            if (!document.getElementById('linkedin-section').classList.contains('hidden')) {
+                content += `LinkedIn: ${document.getElementById('linkedin-input').value}\n`;
+            }
+            if (!document.getElementById('website-section').classList.contains('hidden')) {
+                content += `Website: ${document.getElementById('website-input').value}\n`;
+            }
+            if (!document.getElementById('github-section').classList.contains('hidden')) {
+                content += `GitHub: ${document.getElementById('github-input').value}\n`;
+            }
+            if (!document.getElementById('twitter-section').classList.contains('hidden')) {
+                content += `Twitter: ${document.getElementById('twitter-input').value}\n`;
+            }
+            
+            doc.text(content, 10, 10);
+            doc.save("resume.pdf");
+        }
+
+        window.onload = showSelectedSections;
+    </script>
+</body>
+</html> 
