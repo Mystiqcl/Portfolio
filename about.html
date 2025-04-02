@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>About Me - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         * {
@@ -13,131 +13,284 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-        body {
-            background: #0c0f1c;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            flex-direction: column;
-            padding: 50px 0;
-        }
-        .navbar {
-            width: 80%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 20px 0;
-        }
-        .navbar a {
-            color: cyan;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
-        .container {
-            background: #121826;
-            width: 90%;
-            max-width: 1100px;
-            padding: 60px;
-            border-radius: 20px;
-            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .content {
-        max-width: 100%;
-    }
-    .profile-img img {
-        width: 180px; /* Adjust profile image size */
-    }
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-    }
-    .navbar a {
-        margin: 10px 0; /* More spacing for mobile */
-    }
-}
 
+        :root {
+            --bg-primary: #1F2937;
+            --bg-secondary: #374151;
+            --accent: #7DB9B3;
+            --text-primary: #F3F4F6;
+            --text-secondary: #D1D5DB;
         }
-        .container h1 {
-            font-size: 42px;
-            color: cyan;
-            margin-bottom: 20px;
-        }
-        .container p {
-            font-size: 18px;
-            max-width: 800px;
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
             line-height: 1.6;
-            margin-bottom: 30px;
         }
-        .about-section {
-            background: #1a2238;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.2);
-            width: 100%;
-            max-width: 900px;
-            text-align: left;
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .about-section h2 {
-            font-size: 30px;
-            color: cyan;
-            margin-bottom: 15px;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
         }
-        .about-section ul {
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--bg-primary);
+            font-weight: 600;
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background: var(--bg-secondary);
+        }
+
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .about-content {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .about-content h2 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .skills-section {
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .skills-section h2 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .skill-card {
+            background: var(--bg-secondary);
+            padding: 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-card ul {
             list-style: none;
-            padding: 0;
+            color: var(--text-secondary);
         }
-        .about-section ul li {
-            font-size: 18px;
-            margin-bottom: 10px;
+
+        .skill-card li {
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
         }
-        
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .page-title {
+                margin-bottom: 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .page-title h1 {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="navbar">
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">AP</div>
+            <span class="logo-text">Abizard</span>
+        </a>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="#">About</a>
+            <a href="about.html">About</a>
             <a href="portfolio.html">Projects</a>
             <a href="contact.html">Contact</a>
         </div>
-    </div>
-    <div class="container">
-        <h1>About Me</h1>
-        <p>Welcome to my about page! I'm passionate about creating visually appealing and user-friendly websites. Here’s a little more about me.</p>
-        <div class="about-section">
-            <h2>Who Am I?</h2>
-            <ul>
-                <li><strong>Name:</strong> Abizard Avantgarda Pratama</li>
-                <li><strong>Age:</strong> 17</li>
-                <li><strong>Location:</strong> Bandung, Indonesia</li>
-                <li><strong>Field:</strong> Intermediate Frontend Developer</li>
-                <li><strong>Education:</strong> Aspiring student at Telkom University, majoring in Information Systems</li>
-                <li><strong>Interests:</strong> Web Development, UI/UX Design, Data Science, and Artificial Intelligence</li>
-                <li><strong>Hobbies:</strong> Playing Volleyball, listening to music, watching tech videos, and exploring new programming frameworks</li>
-                <li><strong>Achievements:</strong> 
-                    <ul>
-                        <li>Top 3 in the National English Olympiad</li>
-                        <li>Football team captain and assistant manager</li>
-                        <li>Leader and coach in various school activities</li>
-                        <li>School band member</li>
-                    </ul>
-                </li>
-                <li><strong>Future Goals:</strong> Completing a bachelor's degree at Telkom University with a double degree at Fontys University, pursuing a master's in the Netherlands, and working internationally in the tech industry</li>
-                <li><strong>Life Motto:</strong> <i>Carpe Diem - Seize the day!</i></li>
-            </ul>
+    </nav>
+    <main class="main-container">
+        <div class="page-title">
+            <h1>About Me</h1>
+            <p>Get to know more about my journey, skills, and what drives me as a developer.</p>
         </div>
-    </div>
+        <div class="about-grid">
+            <div class="about-content">
+                <h2>My Story</h2>
+                <p>I'm a 17-year-old student currently enrolled at Telkom University, pursuing a degree in System Information. My journey in technology began with a fascination for how websites work and how they can create engaging user experiences.</p>
+                <p>While I'm still in the early stages of my learning journey, I'm passionate about frontend development and aspire to become a skilled web developer. I'm dedicated to learning modern web technologies and creating beautiful, functional websites that make a difference.</p>
+            </div>
+            <div class="skills-section">
+                <h2>Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Frontend Development</h3>
+                        <ul>
+                            <li>HTML5 & CSS3</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>React.js</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Tools & Technologies</h3>
+                        <ul>
+                            <li>Git & GitHub</li>
+                            <li>VS Code</li>
+                            <li>Chrome DevTools</li>
+                            <li>Figma</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
