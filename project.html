@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Name | Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#000000',secondary:''},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+html {
+scroll-behavior: smooth;
+}
+body {
+font-family: 'Inter', sans-serif;
+background-color: #0a0a0a;
+color: #f5f5f5;
+}
+input, textarea {
+background-color: #1a1a1a;
+border: 1px solid #333;
+color: #f5f5f5;
+transition: all 0.3s ease;
+}
+input:focus, textarea:focus {
+border-color: #f5f5f5;
+outline: none;
+box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+}
+.gallery-item {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-item:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.social-icon {
+transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icon:hover {
+transform: translateY(-3px);
+color: #fff;
+}
+.fade-in {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+opacity: 1;
+transform: translateY(0);
+}
+.progress-bar {
+height: 6px;
+background: #333;
+border-radius: 3px;
+overflow: hidden;
+}
+.progress-bar-fill {
+height: 100%;
+background: linear-gradient(90deg, #333 0%, #f5f5f5 100%);
+border-radius: 3px;
+transition: width 1s ease-in-out;
+}
+.image-zoom {
+overflow: hidden;
+}
+.image-zoom img {
+transition: transform 0.5s ease;
+}
+.image-zoom:hover img {
+transform: scale(1.05);
+}
+.tag {
+background-color: #1a1a1a;
+color: #f5f5f5;
+padding: 0.25rem 0.75rem;
+border-radius: 9999px;
+font-size: 0.75rem;
+font-weight: 500;
+transition: all 0.3s ease;
+}
+.tag:hover {
+background-color: #333;
+}
+</style>
+</head>
+<body class="min-h-screen">
+<header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90 backdrop-blur-sm">
+<nav class="container mx-auto px-6 py-4">
+<div class="flex justify-between items-center">
+<a href="https://readdy.ai/home/4b42e3c3-c9f3-4914-85e3-9467821d3107/3da84847-5633-4919-a747-12bbffd0faad" data-readdy="true" class="text-2xl font-['Pacifico'] text-white">Abizard</a>
+<div class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/4b42e3c3-c9f3-4914-85e3-9467821d3107/3da84847-5633-4919-a747-12bbffd0faad" data-readdy="true" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+<a href="#overview" class="text-gray-300 hover:text-white transition-colors duration-300">Overview</a>
+<a href="#process" class="text-gray-300 hover:text-white transition-colors duration-300">Process</a>
+<a href="#gallery" class="text-gray-300 hover:text-white transition-colors duration-300">Gallery</a>
+<a href="#tech" class="text-gray-300 hover:text-white transition-colors duration-300">Tech Stack</a>
+<a href="#results" class="text-gray-300 hover:text-white transition-colors duration-300">Results</a>
+</div>
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-white" id="menuToggle">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+<div id="mobileMenu" class="md:hidden hidden pt-4 pb-2 border-t border-gray-800 mt-4">
+<div class="flex flex-col space-y-4">
+<a href="https://readdy.ai/home/4b42e3c3-c9f3-4914-85e3-9467821d3107/3da84847-5633-4919-a747-12bbffd0faad" data-readdy="true" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+<a href="#overview" class="text-gray-300 hover:text-white transition-colors duration-300">Overview</a>
+<a href="#process" class="text-gray-300 hover:text-white transition-colors duration-300">Process</a>
+<a href="#gallery" class="text-gray-300 hover:text-white transition-colors duration-300">Gallery</a>
+<a href="#tech" class="text-gray-300 hover:text-white transition-colors duration-300">Tech Stack</a>
+<a href="#results" class="text-gray-300 hover:text-white transition-colors duration-300">Results</a>
+</div>
+</div>
+</nav>
+</header>
+<section class="pt-32 pb-20 bg-black">
+<div class="container mx-auto px-6">
+<div class="flex items-center mb-8">
+<a href="https://readdy.ai/home/4b42e3c3-c9f3-4914-85e3-9467821d3107/3da84847-5633-4919-a747-12bbffd0faad" data-readdy="true" class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
+<i class="ri-arrow-left-line ri-lg mr-2"></i>
+<span>Back to Portfolio</span>
+</a>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="fade-in">
+<div class="flex flex-wrap gap-3 mb-6">
+<span class="tag">[Category 1]</span>
+<span class="tag">[Category 2]</span>
+<span class="tag">[Category 3]</span>
+<span class="tag">[Category 4]</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">[Project Name]</h1>
+<p class="text-xl text-gray-300 mb-8">[Brief project description highlighting the main achievements and goals]</p>
+<div class="flex flex-wrap gap-3 mb-8">
+<span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-full">[Technology 1]</span>
+<span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-full">[Technology 2]</span>
+<span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-full">[Technology 3]</span>
+<span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-full">[Technology 4]</span>
+</div>
+<div class="flex items-center gap-8 mb-8">
+<div>
+<p class="text-sm text-gray-400 mb-1">Project Timeline</p>
+<p class="text-lg font-medium">[Duration]</p>
+</div>
+<div>
+<p class="text-sm text-gray-400 mb-1">Client/Company</p>
+<p class="text-lg font-medium">[Client Name]</p>
+</div>
+<div>
+<p class="text-sm text-gray-400 mb-1">Role</p>
+<p class="text-lg font-medium">[Your Role]</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-4">
+<a href="#" class="px-8 py-4 bg-primary text-white hover:bg-opacity-80 transition-colors duration-300 !rounded-button whitespace-nowrap">View Live Demo</a>
+<a href="#" class="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-black transition-colors duration-300 !rounded-button whitespace-nowrap">View Source Code</a>
+</div>
+</div>
+<div class="image-zoom rounded-lg overflow-hidden shadow-2xl fade-in">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520restaurant%2520website%2520design%2520with%2520modern%2520dark%2520theme%2520interface%2520showing%2520food%2520menu%2520and%2520online%2520ordering%2520system%2520on%2520laptop%2520screen%2520with%2520professional%2520photography%2520of%2520gourmet%2520dishes%2520and%2520clean%2520typography%2520layout%2520for%2520a%2520high-end%2520bistro&width=800&height=600&seq=1&orientation=landscape" alt="Local Business Website Redesign" class="w-full h-full object-cover">
+</div>
+</div>
+</div>
+</section>
+<section id="overview" class="py-20 bg-gray-950">
+<div class="container mx-auto px-6">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-3xl font-bold mb-12 text-center fade-in">Project Overview</h2>
+<div class="space-y-8 fade-in">
+<p class="text-lg text-gray-300 leading-relaxed">
+Savory Bistro, a popular local restaurant in Medan, approached me to redesign their outdated website. The existing site was not mobile-friendly, lacked online ordering capabilities, and failed to showcase their culinary offerings effectively. The client needed a modern, responsive website that would enhance their brand image and improve the customer experience.
+</p>
+<div class="bg-black p-6 rounded-lg">
+<h3 class="text-xl font-semibold mb-4">Project Goals</h3>
+<ul class="space-y-3 text-gray-300">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mr-3 mt-0.5 bg-gray-900 rounded-full">
+<i class="ri-check-line text-green-400"></i>
+</div>
+<span>Create a responsive design that works flawlessly across all devices</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mr-3 mt-0.5 bg-gray-900 rounded-full">
+<i class="ri-check-line text-green-400"></i>
+</div>
+<span>Implement an intuitive online ordering system with secure payment processing</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mr-3 mt-0.5 bg-gray-900 rounded-full">
+<i class="ri-check-line text-green-400"></i>
+</div>
+<span>Showcase the restaurant's ambiance and menu items with high-quality visuals</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mr-3 mt-0.5 bg-gray-900 rounded-full">
+<i class="ri-check-line text-green-400"></i>
+</div>
+<span>Improve site performance and loading speeds for better user experience</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mr-3 mt-0.5 bg-gray-900 rounded-full">
+<i class="ri-check-line text-green-400"></i>
+</div>
+<span>Integrate reservation system with automated confirmation emails</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-4">Target Audience</h3>
+<p class="text-gray-300 mb-4">The website was designed with the following user groups in mind:</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-black p-5 rounded-lg">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center mr-3 bg-gray-900 rounded-lg">
+<i class="ri-user-line ri-lg"></i>
+</div>
+<h4 class="font-medium">Local Diners</h4>
+</div>
+<p class="text-gray-400 text-sm">Regular customers looking for menu updates, special offers, and easy reservation options.</p>
+</div>
+<div class="bg-black p-5 rounded-lg">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center mr-3 bg-gray-900 rounded-lg">
+<i class="ri-building-line ri-lg"></i>
+</div>
+<h4 class="font-medium">Corporate Clients</h4>
+</div>
+<p class="text-gray-400 text-sm">Businesses looking for catering services and private event spaces for corporate functions.</p>
+</div>
+<div class="bg-black p-5 rounded-lg">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center mr-3 bg-gray-900 rounded-lg">
+<i class="ri-map-pin-line ri-lg"></i>
+</div>
+<h4 class="font-medium">Tourists</h4>
+</div>
+<p class="text-gray-400 text-sm">Visitors to the area searching for authentic local dining experiences with easy-to-access information.</p>
+</div>
+<div class="bg-black p-5 rounded-lg">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center mr-3 bg-gray-900 rounded-lg">
+<i class="ri-takeaway-line ri-lg"></i>
+</div>
+<h4 class="font-medium">Takeout Customers</h4>
+</div>
+<p class="text-gray-400 text-sm">Users looking for a quick and efficient online ordering experience for pickup or delivery.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="process" class="py-20 bg-black">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold mb-16 text-center fade-in">Development Process</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+<div class="bg-gray-900 p-6 rounded-lg fade-in">
+<div class="w-12 h-12 flex items-center justify-center mb-4 bg-black rounded-lg">
+<i class="ri-search-line ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">1. Research & Discovery</h3>
+<p class="text-gray-400 mb-4">I began with a comprehensive analysis of the restaurant's brand identity, target audience, and competitors. This phase included stakeholder interviews, user surveys, and competitive analysis.</p>
+<ul class="text-gray-400 space-y-2 text-sm">
+<li class="flex items-start">
+<i class="ri-arrow-right-s-line ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Conducted interviews with restaurant staff and management</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-s-line ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Analyzed 5 competitor websites for best practices</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-s-line ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Surveyed 50+ existing customers about their online preferences</span>
+</li>
+</ul>
+</div>
+<div class="bg-gray-900 p-6 rounded-lg fade-in">
+<div class="w-12 h-12 flex items-center justify-center mb-4 bg-black rounded-lg">
+<i class="ri-layout-line ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">2. Design & Prototyping</h3>
+<p class="text-gray-400 mb-4">Based on research findings, I created wireframes and interactive prototypes to visualize the user experience. This iterative process involved multiple feedback rounds with the client.</p>
+<ul class="text-gray-400 space-y-2 text-sm">
+<li class="flex items-start">
+<i class="ri-arrow-right-s-line ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Created low-fidelity wireframes for key pages</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-s-line ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Developed high-fidelity mockups with brand colors</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-s-line ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Built interactive prototypes for user testing</span>
+</li>
+</ul>
+</div>
+<div class="bg-gray-900 p-6 rounded-lg fade-in">
+<div class="w-12 h-12 flex items-center justify-center mb-4 bg-black rounded-lg">
+<i class="ri-code-s-slash-line ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">3. Development & Testing</h3>
+<p class="text-gray-400 mb-4">I implemented the approved designs using modern web technologies, focusing on performance, accessibility, and responsive behavior across devices.</p>
+<ul class="text-gray-400 space-y-2 text-sm">
+<li class="flex items-start">
+<i class="ri-arrow-right-s-line ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Built responsive layouts with HTML5, CSS3, and JavaScript</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-s-line ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Integrated online ordering system with payment gateway</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-s-line ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Conducted cross-browser and device testing</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="max-w-4xl mx-auto">
+<div class="bg-gray-900 p-8 rounded-lg mb-12 fade-in">
+<h3 class="text-xl font-semibold mb-6">Challenges & Solutions</h3>
+<div class="space-y-8">
+<div>
+<h4 class="text-lg font-medium mb-3 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center mr-3 bg-black rounded-full text-red-400">
+<i class="ri-error-warning-line"></i>
+</div>
+Challenge: Complex Menu Structure
+</h4>
+<p class="text-gray-400 mb-3">The restaurant's extensive menu with seasonal variations and dietary options was difficult to organize in a user-friendly way.</p>
+<div class="bg-black p-4 rounded-lg">
+<h5 class="text-base font-medium mb-2 flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 bg-gray-900 rounded-full text-green-400">
+<i class="ri-lightbulb-line"></i>
+</div>
+Solution:
+</h5>
+<p class="text-gray-400">I designed a hierarchical menu system with intuitive filtering options for dietary preferences, price range, and popular items. The menu items were organized by category with clear visual indicators for special items and allergen information.</p>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-medium mb-3 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center mr-3 bg-black rounded-full text-red-400">
+<i class="ri-error-warning-line"></i>
+</div>
+Challenge: Mobile Performance
+</h4>
+<p class="text-gray-400 mb-3">Initial designs included high-resolution images that caused slow loading times on mobile devices with limited bandwidth.</p>
+<div class="bg-black p-4 rounded-lg">
+<h5 class="text-base font-medium mb-2 flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 bg-gray-900 rounded-full text-green-400">
+<i class="ri-lightbulb-line"></i>
+</div>
+Solution:
+</h5>
+<p class="text-gray-400">I implemented responsive image loading with multiple resolution options, lazy loading for off-screen content, and image compression techniques that maintained visual quality while reducing file sizes by over 60%.</p>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-medium mb-3 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center mr-3 bg-black rounded-full text-red-400">
+<i class="ri-error-warning-line"></i>
+</div>
+Challenge: Integration Complexity
+</h4>
+<p class="text-gray-400 mb-3">Connecting the online ordering system with the restaurant's existing POS (Point of Sale) system required complex integration work.</p>
+<div class="bg-black p-4 rounded-lg">
+<h5 class="text-base font-medium mb-2 flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 bg-gray-900 rounded-full text-green-400">
+<i class="ri-lightbulb-line"></i>
+</div>
+Solution:
+</h5>
+<p class="text-gray-400">I developed a custom API middleware that synchronized online orders with the POS system in real-time, while providing fallback mechanisms for manual order processing during system outages.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-900 p-8 rounded-lg fade-in">
+<h3 class="text-xl font-semibold mb-6">Development Timeline</h3>
+<div class="space-y-8">
+<div class="relative pl-8 border-l-2 border-gray-800">
+<div class="absolute left-[-8px] top-0 w-4 h-4 bg-gray-900 border-2 border-white rounded-full"></div>
+<h4 class="font-medium mb-2">Research & Planning</h4>
+<p class="text-sm text-gray-400 mb-2">March 1-14, 2024</p>
+<p class="text-gray-400">Stakeholder interviews, competitor analysis, and project planning.</p>
+</div>
+<div class="relative pl-8 border-l-2 border-gray-800">
+<div class="absolute left-[-8px] top-0 w-4 h-4 bg-gray-900 border-2 border-white rounded-full"></div>
+<h4 class="font-medium mb-2">Wireframing & Design</h4>
+<p class="text-sm text-gray-400 mb-2">March 15-31, 2024</p>
+<p class="text-gray-400">Creating wireframes, mockups, and interactive prototypes.</p>
+</div>
+<div class="relative pl-8 border-l-2 border-gray-800">
+<div class="absolute left-[-8px] top-0 w-4 h-4 bg-gray-900 border-2 border-white rounded-full"></div>
+<h4 class="font-medium mb-2">Frontend Development</h4>
+<p class="text-sm text-gray-400 mb-2">April 1-20, 2024</p>
+<p class="text-gray-400">HTML/CSS implementation, responsive layouts, and JavaScript interactions.</p>
+</div>
+<div class="relative pl-8 border-l-2 border-gray-800">
+<div class="absolute left-[-8px] top-0 w-4 h-4 bg-gray-900 border-2 border-white rounded-full"></div>
+<h4 class="font-medium mb-2">Backend Integration</h4>
+<p class="text-sm text-gray-400 mb-2">April 21 - May 5, 2024</p>
+<p class="text-gray-400">Implementing ordering system, payment processing, and POS integration.</p>
+</div>
+<div class="relative pl-8 border-l-2 border-gray-800">
+<div class="absolute left-[-8px] top-0 w-4 h-4 bg-gray-900 border-2 border-white rounded-full"></div>
+<h4 class="font-medium mb-2">Testing & Refinement</h4>
+<p class="text-sm text-gray-400 mb-2">May 6-15, 2024</p>
+<p class="text-gray-400">User testing, bug fixes, and performance optimization.</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-[-8px] top-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+<h4 class="font-medium mb-2">Launch</h4>
+<p class="text-sm text-gray-400 mb-2">May 20, 2024</p>
+<p class="text-gray-400">Site deployment, final checks, and handover to client.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="gallery" class="py-20 bg-gray-950">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold mb-16 text-center fade-in">Project Gallery</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+<div class="bg-black rounded-lg overflow-hidden gallery-item fade-in">
+<div class="aspect-[4/3] image-zoom">
+<img src="https://readdy.ai/api/search-image?query=elegant%2520restaurant%2520website%2520homepage%2520with%2520dark%2520theme%2520showing%2520hero%2520image%2520of%2520gourmet%2520food%2520and%2520modern%2520navigation%2520menu%2520on%2520desktop%2520screen%2520with%2520professional%2520photography%2520and%2520clean%2520typography&width=600&height=450&seq=2&orientation=landscape" alt="Homepage Design" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-5">
+<h3 class="font-medium mb-2">Homepage Design</h3>
+<p class="text-gray-400 text-sm">The homepage features a striking hero section with high-quality food photography and intuitive navigation.</p>
+</div>
+</div>
+<div class="bg-black rounded-lg overflow-hidden gallery-item fade-in">
+<div class="aspect-[4/3] image-zoom">
+<img src="https://readdy.ai/api/search-image?query=restaurant%2520website%2520menu%2520page%2520with%2520elegant%2520dark%2520theme%2520showing%2520food%2520categories%2520and%2520dishes%2520with%2520prices%2520and%2520descriptions%2520on%2520tablet%2520device%2520with%2520professional%2520food%2520photography%2520and%2520clean%2520layout&width=600&height=450&seq=3&orientation=landscape" alt="Menu Page" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-5">
+<h3 class="font-medium mb-2">Interactive Menu</h3>
+<p class="text-gray-400 text-sm">The digital menu allows filtering by dietary preferences and features high-resolution images of signature dishes.</p>
+</div>
+</div>
+<div class="bg-black rounded-lg overflow-hidden gallery-item fade-in">
+<div class="aspect-[4/3] image-zoom">
+<img src="https://readdy.ai/api/search-image?query=restaurant%2520website%2520online%2520ordering%2520system%2520with%2520dark%2520theme%2520showing%2520shopping%2520cart%2520and%2520checkout%2520process%2520on%2520mobile%2520phone%2520with%2520clean%2520interface%2520and%2520payment%2520options%2520for%2520food%2520delivery&width=600&height=450&seq=4&orientation=landscape" alt="Online Ordering" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-5">
+<h3 class="font-medium mb-2">Online Ordering System</h3>
+<p class="text-gray-400 text-sm">The streamlined ordering process makes it easy for customers to select items, customize orders, and complete payment.</p>
+</div>
+</div>
+<div class="bg-black rounded-lg overflow-hidden gallery-item fade-in">
+<div class="aspect-[4/3] image-zoom">
+<img src="https://readdy.ai/api/search-image?query=restaurant%2520website%2520reservation%2520system%2520with%2520dark%2520theme%2520showing%2520calendar%2520date%2520picker%2520and%2520time%2520selection%2520interface%2520on%2520laptop%2520with%2520elegant%2520design%2520and%2520form%2520fields%2520for%2520booking%2520a%2520table&width=600&height=450&seq=5&orientation=landscape" alt="Reservation System" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-5">
+<h3 class="font-medium mb-2">Reservation System</h3>
+<p class="text-gray-400 text-sm">The intuitive booking interface allows customers to check availability and make reservations in real-time.</p>
+</div>
+</div>
+<div class="bg-black rounded-lg overflow-hidden gallery-item fade-in">
+<div class="aspect-[4/3] image-zoom">
+<img src="https://readdy.ai/api/search-image?query=restaurant%2520website%2520about%2520page%2520with%2520dark%2520theme%2520showing%2520chef%2520profiles%2520and%2520restaurant%2520story%2520with%2520elegant%2520layout%2520and%2520professional%2520photography%2520of%2520kitchen%2520and%2520staff%2520on%2520desktop%2520display&width=600&height=450&seq=6&orientation=landscape" alt="About Page" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-5">
+<h3 class="font-medium mb-2">About Page</h3>
+<p class="text-gray-400 text-sm">The about section tells the restaurant's story and introduces the team with engaging visuals and narratives.</p>
+</div>
+</div>
+<div class="bg-black rounded-lg overflow-hidden gallery-item fade-in">
+<div class="aspect-[4/3] image-zoom">
+<img src="https://readdy.ai/api/search-image?query=restaurant%2520website%2520responsive%2520design%2520mockup%2520showing%2520the%2520same%2520page%2520on%2520different%2520devices%2520including%2520desktop%2520tablet%2520and%2520mobile%2520with%2520dark%2520theme%2520and%2520consistent%2520branding%2520across%2520all%2520screen%2520sizes&width=600&height=450&seq=7&orientation=landscape" alt="Responsive Design" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-5">
+<h3 class="font-medium mb-2">Responsive Design</h3>
+<p class="text-gray-400 text-sm">The website maintains a consistent experience across desktop, tablet, and mobile devices.</p>
+</div>
+</div>
+</div>
+<div class="max-w-4xl mx-auto">
+<div class="bg-black p-8 rounded-lg fade-in">
+<h3 class="text-xl font-semibold mb-6">Before & After Comparison</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<h4 class="font-medium mb-4 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center mr-3 bg-gray-900 rounded-full text-red-400">
+<i class="ri-close-line"></i>
+</div>
+Before Redesign
+</h4>
+<div class="bg-gray-900 p-4 rounded-lg">
+<div class="aspect-video overflow-hidden rounded mb-4">
+<img src="https://readdy.ai/api/search-image?query=outdated%2520restaurant%2520website%2520with%2520poor%2520design%2520showing%2520cluttered%2520layout%2520low%2520quality%2520images%2520and%2520non-responsive%2520interface%2520on%2520desktop%2520screen%2520with%2520early%25202000s%2520web%2520design%2520aesthetic%2520and%2520basic%2520HTML%2520appearance&width=500&height=300&seq=8&orientation=landscape" alt="Before Redesign" class="w-full h-full object-cover object-top">
+</div>
+<ul class="text-gray-400 space-y-2 text-sm">
+<li class="flex items-start">
+<i class="ri-close-circle-line text-red-400 ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Non-responsive, desktop-only design</span>
+</li>
+<li class="flex items-start">
+<i class="ri-close-circle-line text-red-400 ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Outdated visual aesthetic</span>
+</li>
+<li class="flex items-start">
+<i class="ri-close-circle-line text-red-400 ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>No online ordering capabilities</span>
+</li>
+<li class="flex items-start">
+<i class="ri-close-circle-line text-red-400 ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Poor performance (6.2s load time)</span>
+</li>
+<li class="flex items-start">
+<i class="ri-close-circle-line text-red-400 ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Low-quality images and typography</span>
+</li>
+</ul>
+</div>
+</div>
+<div>
+<h4 class="font-medium mb-4 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center mr-3 bg-gray-900 rounded-full text-green-400">
+<i class="ri-check-line"></i>
+</div>
+After Redesign
+</h4>
+<div class="bg-gray-900 p-4 rounded-lg">
+<div class="aspect-video overflow-hidden rounded mb-4">
+<img src="https://readdy.ai/api/search-image?query=modern%2520restaurant%2520website%2520with%2520elegant%2520dark%2520theme%2520showing%2520clean%2520layout%2520professional%2520food%2520photography%2520and%2520responsive%2520design%2520on%2520desktop%2520screen%2520with%2520contemporary%2520web%2520design%2520aesthetic%2520and%2520intuitive%2520navigation&width=500&height=300&seq=9&orientation=landscape" alt="After Redesign" class="w-full h-full object-cover object-top">
+</div>
+<ul class="text-gray-400 space-y-2 text-sm">
+<li class="flex items-start">
+<i class="ri-check-circle-line text-green-400 ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Fully responsive across all devices</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-circle-line text-green-400 ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Modern, elegant visual design</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-circle-line text-green-400 ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Integrated online ordering system</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-circle-line text-green-400 ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>Optimized performance (1.8s load time)</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-circle-line text-green-400 ri-lg mr-2 mt-0.5 flex-shrink-0"></i>
+<span>High-quality visuals and typography</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tech" class="py-20 bg-black">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold mb-16 text-center fade-in">Technology Stack</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+<div class="fade-in">
+<h3 class="text-xl font-semibold mb-8">Frontend Technologies</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center mr-4 bg-gray-900 rounded-lg">
+<i class="ri-html5-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">HTML5</h4>
+<p class="text-gray-400 text-sm">Used for semantic markup structure with accessibility considerations.</p>
+<div class="mt-2 progress-bar">
+<div class="progress-bar-fill" style="width: 95%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center mr-4 bg-gray-900 rounded-lg">
+<i class="ri-css3-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">CSS3 / SASS</h4>
+<p class="text-gray-400 text-sm">Implemented responsive layouts with CSS Grid and Flexbox.</p>
+<div class="mt-2 progress-bar">
+<div class="progress-bar-fill" style="width: 90%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center mr-4 bg-gray-900 rounded-lg">
+<i class="ri-javascript-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">JavaScript</h4>
+<p class="text-gray-400 text-sm">Created interactive elements and form validations.</p>
+<div class="mt-2 progress-bar">
+<div class="progress-bar-fill" style="width: 85%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center mr-4 bg-gray-900 rounded-lg">
+<i class="ri-responsive-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Responsive Design</h4>
+<p class="text-gray-400 text-sm">Mobile-first approach with adaptive layouts for all devices.</p>
+<div class="mt-2 progress-bar">
+<div class="progress-bar-fill" style="width: 95%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fade-in">
+<h3 class="text-xl font-semibold mb-8">Backend & Integration</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center mr-4 bg-gray-900 rounded-lg">
+<i class="ri-database-2-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">MySQL Database</h4>
+<p class="text-gray-400 text-sm">Stored menu items, customer orders, and reservation data.</p>
+<div class="mt-2 progress-bar">
+<div class="progress-bar-fill" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center mr-4 bg-gray-900 rounded-lg">
+<i class="ri-secure-payment-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Payment Integration</h4>
+<p class="text-gray-400 text-sm">Implemented secure payment processing with Stripe API.</p>
+<div class="mt-2 progress-bar">
+<div class="progress-bar-fill" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center mr-4 bg-gray-900 rounded-lg">
+<i class="ri-cloud-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">AWS Hosting</h4>
+<p class="text-gray-400 text-sm">Deployed on AWS with CloudFront CDN for global performance.</p>
+<div class="mt-2 progress-bar">
+<div class="progress-bar-fill" style="width: 70%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center mr-4 bg-gray-900 rounded-lg">
+<i class="ri-mail-send-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Email Notifications</h4>
+<p class="text-gray-400 text-sm">Automated confirmation emails for orders and reservations.</p>
+<div class="mt-2 progress-bar">
+<div class="progress-bar-fill" style="width: 85%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-4xl mx-auto mt-16">
+<div class="bg-gray-900 p-8 rounded-lg fade-in">
+<h3 class="text-xl font-semibold mb-6">Technical Highlights</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-black p-5 rounded-lg">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center mr-3 bg-gray-900 rounded-lg">
+<i class="ri-speed-line ri-lg text-blue-400"></i>
+</div>
+<h4 class="font-medium">Performance Optimization</h4>
+</div>
+<p class="text-gray-400 text-sm">Implemented lazy loading, image optimization, and code splitting to achieve a 95+ PageSpeed score on mobile and desktop.</p>
+</div>
+<div class="bg-black p-5 rounded-lg">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center mr-3 bg-gray-900 rounded-lg">
+<i class="ri-shield-check-line ri-lg text-green-400"></i>
+</div>
+<h4 class="font-medium">Security Measures</h4>
+</div>
+<p class="text-gray-400 text-sm">Implemented HTTPS, input sanitization, and secure payment processing to protect customer data and prevent common web vulnerabilities.</p>
+</div>
+<div class="bg-black p-5 rounded-lg">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center mr-3 bg-gray-900 rounded-lg">
+<i class="ri-accessibility-line ri-lg text-purple-400"></i>
+</div>
+<h4 class="font-medium">Accessibility</h4>
+</div>
+<p class="text-gray-400 text-sm">Ensured WCAG 2.1 AA compliance with proper semantic HTML, keyboard navigation, screen reader support, and sufficient color contrast.</p>
+</div>
+<div class="bg-black p-5 rounded-lg">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center mr-3 bg-gray-900 rounded-lg">
+<i class="ri-search-eye-line ri-lg text-yellow-400"></i>
+</div>
+<h4 class="font-medium">SEO Optimization</h4>
+</div>
+<p class="text-gray-400 text-sm">Implemented structured data, optimized meta tags, and improved site performance to enhance search engine visibility for local searches.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="results" class="py-20 bg-gray-950">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold mb-16 text-center fade-in">Results & Impact</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+<div class="bg-black p-6 rounded-lg text-center fade-in">
+<div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-gray-900 rounded-full">
+<i class="ri-eye-line ri-2x text-blue-400"></i>
+</div>
+<h3 class="text-2xl font-bold mb-2">156%</h3>
+<p class="text-gray-400">Increase in website traffic within first month</p>
+</div>
+<div class="bg-black p-6 rounded-lg text-center fade-in">
+<div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-gray-900 rounded-full">
+<i class="ri-shopping-cart-line ri-2x text-green-400"></i>
+</div>
+<h3 class="text-2xl font-bold mb-2">42%</h3>
+<p class="text-gray-400">Growth in online orders compared to phone orders</p>
+</div>
+<div class="bg-black p-6 rounded-lg text-center fade-in">
+<div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-gray-900 rounded-full">
+<i class="ri-time-line ri-2x text-yellow-400"></i>
+</div>
+<h3 class="text-2xl font-bold mb-2">78%</h3>
+<p class="text-gray-400">Reduction in page load time on mobile devices</p>
+</div>
+<div class="bg-black p-6 rounded-lg text-center fade-in">
+<div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-gray-900 rounded-full">
+<i class="ri-user-add-line ri-2x text-purple-400"></i>
+</div>
+<h3 class="text-2xl font-bold mb-2">28%</h3>
+<p class="text-gray-400">Increase in new customer acquisition</p>
+</div>
+</div>
+<div class="max-w-4xl mx-auto">
+<div class="bg-black p-8 rounded-lg mb-12 fade-in">
+<h3 class="text-xl font-semibold mb-6">Client Testimonial</h3>
+<div class="flex">
+<div class="w-12 h-12 flex-shrink-0 mr-4">
+<i class="ri-double-quotes-l ri-2x text-gray-600"></i>
+</div>
+<div>
+<p class="text-lg text-gray-300 italic mb-6">
+[Client testimonial about the project's impact and success]
+</p>
+<div class="flex items-center">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+<img src="[Client photo URL]" alt="Client" class="w-full h-full object-cover">
+</div>
+<div>
+<p class="font-medium">[Client Name]</p>
+<p class="text-sm text-gray-400">[Client Role, Company]</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 fade-in">
+<div class="bg-black p-6 rounded-lg">
+<h3 class="text-xl font-semibold mb-6">Key Achievements</h3>
+<ul class="space-y-4">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mr-3 mt-0.5 bg-gray-900 rounded-full text-green-400">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-300">[Achievement 1 with measurable results]</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mr-3 mt-0.5 bg-gray-900 rounded-full text-green-400">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-300">[Achievement 2 with measurable results]</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mr-3 mt-0.5 bg-gray-900 rounded-full text-green-400">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-300">[Achievement 3 with measurable results]</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mr-3 mt-0.5 bg-gray-900 rounded-full text-green-400">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-300">[Achievement 4 with measurable results]</span>
+</li>
+</ul>
+</div>
+<div class="bg-black p-6 rounded-lg">
+<h3 class="text-xl font-semibold mb-6">Lessons Learned</h3>
+<div class="space-y-4">
+<div>
+<h4 class="font-medium mb-2">User Testing is Invaluable</h4>
+<p class="text-gray-400 text-sm">Early user testing with actual restaurant customers revealed navigation issues that weren't apparent in initial designs. This led to significant improvements in the final product.</p>
+</div>
+<div>
+<h4 class="font-medium mb-2">Performance Matters</h4>
+<p class="text-gray-400 text-sm">The initial focus on visual aesthetics led to performance issues. Balancing beautiful imagery with optimization techniques was crucial for mobile users.</p>
+</div>
+<div>
+<h4 class="font-medium mb-2">Staff Training is Essential</h4>
+<p class="text-gray-400 text-sm">Even the best system requires proper training. Creating comprehensive documentation and training sessions for restaurant staff was vital for successful implementation.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-black">
+<div class="container mx-auto px-6">
+<div class="max-w-4xl mx-auto text-center fade-in">
+<h2 class="text-3xl font-bold mb-8">Ready to See More?</h2>
+<p class="text-xl text-gray-300 mb-12">Check out my other projects or get in touch to discuss your next web development project.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<a href="https://readdy.ai/home/4b42e3c3-c9f3-4914-85e3-9467821d3107/3da84847-5633-4919-a747-12bbffd0faad" data-readdy="true" class="px-8 py-4 bg-primary text-white hover:bg-opacity-80 transition-colors duration-300 !rounded-button whitespace-nowrap">Back to Portfolio</a>
+<a href="#" class="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-black transition-colors duration-300 !rounded-button whitespace-nowrap">Contact Me</a>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-10 bg-gray-950 border-t border-gray-900">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<div class="mb-6 md:mb-0">
+<a href="https://readdy.ai/home/4b42e3c3-c9f3-4914-85e3-9467821d3107/3da84847-5633-4919-a747-12bbffd0faad" data-readdy="true" class="text-2xl font-['Pacifico'] text-white">Abizard</a>
+<p class="text-gray-400 mt-2">Student Developer from Medan, Indonesia</p>
+</div>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-900 rounded-lg social-icon">
+<i class="ri-github-fill ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-900 rounded-lg social-icon">
+<i class="ri-linkedin-fill ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-900 rounded-lg social-icon">
+<i class="ri-twitter-fill ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-900 rounded-lg social-icon">
+<i class="ri-instagram-fill ri-lg"></i>
+</a>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-900 text-center">
+<p class="text-gray-500">© 2025 Abizard Avantgarda Pratama. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<a href="#" id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
+<i class="ri-arrow-up-line ri-lg"></i>
+</a>
+<script id="mobileMenuScript">
+document.addEventListener('DOMContentLoaded', function() {
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+menuToggle.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+if (mobileMenu.classList.contains('hidden')) {
+menuToggle.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+} else {
+menuToggle.innerHTML = '<i class="ri-close-line ri-lg"></i>';
+}
+});
+// Close mobile menu when clicking on a link
+const mobileLinks = mobileMenu.querySelectorAll('a');
+mobileLinks.forEach(link => {
+link.addEventListener('click', function() {
+mobileMenu.classList.add('hidden');
+menuToggle.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+});
+});
+});
+</script>
+<script id="scrollAnimationScript">
+document.addEventListener('DOMContentLoaded', function() {
+const fadeElements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+observer.unobserve(entry.target);
+}
+});
+}, {
+threshold: 0.1
+});
+fadeElements.forEach(element => {
+observer.observe(element);
+});
+// Back to top button
+const backToTopButton = document.getElementById('backToTop');
+window.addEventListener('scroll', function() {
+if (window.pageYOffset > 300) {
+backToTopButton.classList.remove('opacity-0', 'invisible');
+backToTopButton.classList.add('opacity-100', 'visible');
+} else {
+backToTopButton.classList.remove('opacity-100', 'visible');
+backToTopButton.classList.add('opacity-0', 'invisible');
+}
+});
+backToTopButton.addEventListener('click', function(e) {
+e.preventDefault();
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+// Initialize progress bars
+const progressBars = document.querySelectorAll('.progress-bar-fill');
+setTimeout(() => {
+progressBars.forEach(bar => {
+bar.style.width = bar.style.width;
+});
+}, 300);
+});
+</script>
+<script id="galleryScript">
+document.addEventListener('DOMContentLoaded', function() {
+// Gallery item hover effect
+const galleryItems = document.querySelectorAll('.gallery-item');
+galleryItems.forEach(item => {
+item.addEventListener('mouseenter', function() {
+this.classList.add('shadow-lg');
+});
+item.addEventListener('mouseleave', function() {
+this.classList.remove('shadow-lg');
+});
+});
+});
+</script>
+</body>
+</html>
